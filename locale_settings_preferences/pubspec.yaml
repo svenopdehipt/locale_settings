@@ -1,0 +1,32 @@
+name: locale_settings_preferences
+description: Implementation of locale_settings for platforms which don't support settings per app using shared preferences
+version: 1.0.0
+homepage:
+publish_to: none
+
+environment:
+  sdk: '>=3.0.5 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  locale_settings:
+    path: ../locale_settings
+  shared_preferences: ^2.1.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.1
+
+flutter:
+  plugin:
+    implements: locale_settings
+    platforms:
+      windows:
+        dartPluginClass: LocaleSettingsHive
+      linux:
+        dartPluginClass: LocaleSettingsHive
+      web:
+        pluginClass: LocaleSettingsHive
+        fileName: locale_settings_hive.dart
