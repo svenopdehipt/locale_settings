@@ -5,9 +5,9 @@ import 'package:locale_settings/locale_settings_platform_interface.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 @immutable
-final class LocaleSettingsHive extends LocaleSettingsPlatform {
+final class LocaleSettingsPreferences extends LocaleSettingsPlatform {
   static void registerWith() {
-    LocaleSettingsPlatform.instance = LocaleSettingsHive();
+    LocaleSettingsPlatform.instance = LocaleSettingsPreferences();
   }
 
   static var preferenceKey = 'app_locale';

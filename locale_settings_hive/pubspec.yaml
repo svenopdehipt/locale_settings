@@ -10,9 +10,14 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_web_plugins:
+    sdk: flutter
   hive: ^2.2.3
   locale_settings:
-    path: ../locale_settings
+    git:
+      url: git@github.com:svenopdehipt/locale_settings.git
+      ref: main
+      path: locale_settings
 
 dev_dependencies:
   flutter_test:
@@ -28,5 +33,5 @@ flutter:
       linux:
         dartPluginClass: LocaleSettingsHive
       web:
-        pluginClass: LocaleSettingsHive
-        fileName: locale_settings_hive.dart
+        pluginClass: LocaleSettingsHiveWeb
+        fileName: locale_settings_hive_web.dart

@@ -5,7 +5,7 @@ import 'package:hive/hive.dart';
 import 'package:locale_settings/locale_settings_platform_interface.dart';
 
 @immutable
-final class LocaleSettingsHive extends LocaleSettingsPlatform {
+base class LocaleSettingsHive extends LocaleSettingsPlatform {
   static void registerWith() {
     LocaleSettingsPlatform.instance = LocaleSettingsHive();
   }

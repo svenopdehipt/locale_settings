@@ -10,8 +10,13 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_web_plugins:
+    sdk: flutter
   locale_settings:
-    path: ../locale_settings
+    git:
+      url: git@github.com:svenopdehipt/locale_settings.git
+      ref: main
+      path: locale_settings
   shared_preferences: ^2.1.2
 
 dev_dependencies:
