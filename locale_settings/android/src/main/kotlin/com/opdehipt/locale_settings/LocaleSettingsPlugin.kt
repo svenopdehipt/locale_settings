@@ -55,7 +55,7 @@ class LocaleSettingsPlugin: FlutterPlugin, MethodCallHandler {
         catch (e: ClassCastException) {
           result.error(
                   "locale_receive_error",
-                  "ClassCastException while receving the locale",
+                  "ClassCastException while receiving the locale",
                   "${e.message}\n${e.stackTraceToString()}",
           )
         }
