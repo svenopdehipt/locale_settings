@@ -1,14 +1,14 @@
 library locale_settings_hive;
 
-import 'package:flutter/cupertino.dart';
 import 'package:locale_settings/locale_settings_platform_interface.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-@immutable
 final class LocaleSettingsPreferences extends LocaleSettingsPlatform {
   static void registerWith() {
     LocaleSettingsPlatform.instance = LocaleSettingsPreferences();
   }
+
+  void Function(String locale)? _localeListener;
 
   static var preferenceKey = 'app_locale';
 
@@ -20,5 +20,11 @@ final class LocaleSettingsPreferences extends LocaleSettingsPlatform {
   @override
   Future<void> setCurrentLocale(String locale) async {
     await (await _preferences).setString(preferenceKey, locale);
+    _localeListener?.call(locale);
+  }
+
+  @override
+  set localeListener(void Function(String locale) localeListener) {
+    _localeListener = localeListener;
   }
 }

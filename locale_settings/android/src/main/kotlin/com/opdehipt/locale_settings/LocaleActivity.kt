@@ -1,6 +1,7 @@
 package com.opdehipt.locale_settings
 
 import android.content.res.Configuration
+import android.os.Build
 import android.os.Bundle
 import android.view.MenuInflater
 import android.view.View
@@ -25,6 +26,9 @@ open class LocaleActivity : FlutterActivity() {
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
         compatDelegate.onConfigurationChanged(newConfig)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            LocaleSettingsPlugin.channel?.invokeMethod("localeUpdated", mapOf("locale" to newConfig.locales[0].toLanguageTag()))
+        }
     }
 
     override fun onStart() {

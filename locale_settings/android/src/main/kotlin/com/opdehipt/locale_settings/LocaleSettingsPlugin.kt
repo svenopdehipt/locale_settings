@@ -1,5 +1,6 @@
 package com.opdehipt.locale_settings
 
+import android.os.Build
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.os.LocaleListCompat
 import io.flutter.embedding.engine.plugins.FlutterPlugin
@@ -14,11 +15,13 @@ class LocaleSettingsPlugin: FlutterPlugin, MethodCallHandler {
   ///
   /// This local reference serves to register the plugin with the Flutter Engine and unregister it
   /// when the Flutter Engine is detached from the Activity
-  private lateinit var channel : MethodChannel
+  companion object {
+    var channel: MethodChannel? = null
+  }
 
   override fun onAttachedToEngine(flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
     channel = MethodChannel(flutterPluginBinding.binaryMessenger, "locale_settings")
-    channel.setMethodCallHandler(this)
+    channel?.setMethodCallHandler(this)
   }
 
   override fun onMethodCall(call: MethodCall, result: Result) {
@@ -65,6 +68,6 @@ class LocaleSettingsPlugin: FlutterPlugin, MethodCallHandler {
   }
 
   override fun onDetachedFromEngine(binding: FlutterPlugin.FlutterPluginBinding) {
-    channel.setMethodCallHandler(null)
+    channel?.setMethodCallHandler(null)
   }
 }

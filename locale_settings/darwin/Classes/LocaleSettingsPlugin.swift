@@ -7,6 +7,12 @@ import Cocoa
 #endif
 
 public class LocaleSettingsPlugin: NSObject, FlutterPlugin {
+  let channel: FlutterMethodChannel
+
+  init(channel: FlutterMethodChannel) {
+    self.channel = channel
+  }
+    
   public static func register(with registrar: FlutterPluginRegistrar) {
     #if os(iOS)
     let messenger = registrar.messenger()
@@ -14,7 +20,7 @@ public class LocaleSettingsPlugin: NSObject, FlutterPlugin {
     let messenger = registrar.messenger
     #endif
     let channel = FlutterMethodChannel(name: "locale_settings", binaryMessenger: messenger)
-    let instance = LocaleSettingsPlugin()
+    let instance = LocaleSettingsPlugin(channel: channel)
     registrar.addMethodCallDelegate(instance, channel: channel)
   }
 
@@ -41,6 +47,7 @@ public class LocaleSettingsPlugin: NSObject, FlutterPlugin {
           return
         }
         UserDefaults.standard.setValue([locale], forKey: "AppleLanguages")
+        channel.invokeMethod("localeUpdated", arguments: ["locale": locale])
         result(nil)
     default:
       result(FlutterMethodNotImplemented)

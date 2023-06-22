@@ -1,9 +1,9 @@
+import 'dart:ui';
+
 import 'package:flutter/foundation.dart';
+import 'package:locale_settings/src/locale_settings_method_channel.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
-import 'locale_settings_method_channel.dart';
-
-@immutable
 abstract base class LocaleSettingsPlatform extends PlatformInterface {
   /// Constructs a LocaleSettingsPlatform.
   LocaleSettingsPlatform() : super(token: _token);
@@ -20,12 +20,14 @@ abstract base class LocaleSettingsPlatform extends PlatformInterface {
   /// Platform-specific implementations should set this with their own
   /// platform-specific class that extends [LocaleSettingsPlatform] when
   /// they register themselves.
-  static set instance(LocaleSettingsPlatform instance) {
+  static set instance(final LocaleSettingsPlatform instance) {
     PlatformInterface.verifyToken(instance, _token);
     _instance = instance;
   }
 
+  set localeListener(final void Function(String locale) localeListener);
+
   Future<String?> getCurrentLocale();
 
-  Future<void> setCurrentLocale(String locale);
+  Future<void> setCurrentLocale(final String locale);
 }
