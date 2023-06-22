@@ -1,6 +1,5 @@
 import 'dart:ui';
 
-import 'package:flutter/foundation.dart';
 import 'package:locale_settings/src/locale_settings_method_channel.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
@@ -25,9 +24,9 @@ abstract base class LocaleSettingsPlatform extends PlatformInterface {
     _instance = instance;
   }
 
-  set localeListener(final void Function(String locale) localeListener);
+  set localeListener(final void Function(Locale locale) localeListener);
 
-  Future<String?> getCurrentLocale();
+  Future<Locale?> getCurrentLocale();
 
-  Future<void> setCurrentLocale(final String locale);
+  Future<void> setCurrentLocale(final Locale locale);
 }

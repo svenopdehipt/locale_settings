@@ -11,14 +11,14 @@ final class MockLocaleSettingsPlatform
     with MockPlatformInterfaceMixin {
 
   @override
-  Future<String?> getCurrentLocale() => Future.value('en-US');
+  Future<Locale?> getCurrentLocale() => Future.value(const Locale('en', 'US'));
 
   @override
-  Future<void> setCurrentLocale(String locale) async {
+  Future<void> setCurrentLocale(Locale locale) async {
   }
 
   @override
-  set localeListener(void Function(String locale) localeListener) {
+  set localeListener(void Function(Locale locale) localeListener) {
   }
 }
 
@@ -30,7 +30,7 @@ void main() {
   });
 
   test('getCurrentLocale', () async {
-    LocaleSettings localeSettingsPlugin = LocaleSettings();
+    LocaleSettings localeSettingsPlugin = const LocaleSettings();
     MockLocaleSettingsPlatform fakePlatform = MockLocaleSettingsPlatform();
     LocaleSettingsPlatform.instance = fakePlatform;
 

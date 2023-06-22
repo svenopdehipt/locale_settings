@@ -1,6 +1,9 @@
 library locale_settings_hive;
 
+import 'dart:ui';
+
 import 'package:hive/hive.dart';
+import 'package:locale_settings/locale_settings.dart';
 import 'package:locale_settings/locale_settings_platform_interface.dart';
 
 final class LocaleSettingsHive extends LocaleSettingsPlatform {
@@ -8,7 +11,7 @@ final class LocaleSettingsHive extends LocaleSettingsPlatform {
     LocaleSettingsPlatform.instance = LocaleSettingsHive();
   }
 
-  void Function(String locale)? _localeListener;
+  void Function(Locale locale)? _localeListener;
 
   static Box? box;
   static var hiveKey = 'current';
@@ -16,16 +19,22 @@ final class LocaleSettingsHive extends LocaleSettingsPlatform {
   final _box = Hive.openBox('app_locale');
 
   @override
-  Future<String?> getCurrentLocale() async => (box ?? await _box).get(hiveKey);
+  Future<Locale?> getCurrentLocale() async {
+    final String? locale = (box ?? await _box).get(hiveKey);
+    if (locale != null) {
+      return stringToLocale(locale);
+    }
+    return null;
+  }
 
   @override
-  Future<void> setCurrentLocale(String locale) async {
-    await (box ?? await _box).put(hiveKey, locale);
+  Future<void> setCurrentLocale(Locale locale) async {
+    await (box ?? await _box).put(hiveKey, locale.toLanguageTag());
     _localeListener?.call(locale);
   }
 
   @override
-  set localeListener(void Function(String locale) localeListener) {
+  set localeListener(void Function(Locale locale) localeListener) {
     _localeListener = localeListener;
   }
 }
