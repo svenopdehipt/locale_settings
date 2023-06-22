@@ -11,12 +11,18 @@ class LocaleListener extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = StreamController<String>();
-    LocaleSettingsPlatform.instance.localeListener = (locale) {
-      controller.add(locale);
-    };
+    LocaleSettingsPlatform.instance.getCurrentLocale().then((final locale) async {
+      if (locale != null) {
+        controller.add(locale);
+      }
+      LocaleSettingsPlatform.instance.localeListener = (locale) {
+        controller.add(locale);
+      };
+    });
     return StreamBuilder(
       stream: controller.stream,
       builder: (final context, final snapshot) {
+        print("t2: ${snapshot.data}");
         if (snapshot.hasData) {
           final [language, country] = snapshot.data!.replaceAll('_', '-').split('-');
           return builder(context, Locale(language, country));
