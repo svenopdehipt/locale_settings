@@ -7,6 +7,8 @@
 // https://docs.flutter.dev/cookbook/testing/integration/introduction
 
 
+import 'dart:ui';
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
 
@@ -16,10 +18,10 @@ void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 
   testWidgets('getCurrentLocale test', (WidgetTester tester) async {
-    final LocaleSettings plugin = LocaleSettings();
-    final String? version = await plugin.getCurrentLocale();
+    const LocaleSettings plugin = LocaleSettings();
+    final Locale? version = await plugin.getCurrentLocale();
     // The version string depends on the host platform running the test, so
     // just assert that some non-empty string is returned.
-    await expectLater(version?.isNotEmpty, true);
+    await expectLater(version?.toLanguageTag().isNotEmpty, true);
   });
 }

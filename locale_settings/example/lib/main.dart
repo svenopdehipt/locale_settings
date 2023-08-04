@@ -30,7 +30,8 @@ class MyApp extends StatelessWidget {
                   TextField(controller: controller),
                   TextButton(
                     onPressed: () async {
-                      _localeSettingsPlugin.setCurrentLocale(controller.text);
+                      final parts = controller.text.split('-');
+                      _localeSettingsPlugin.setCurrentLocale(Locale(parts[0], parts[1]));
                     },
                     child: const Text('Change Language'),
                   ),
