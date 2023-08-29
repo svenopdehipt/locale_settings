@@ -1,14 +1,20 @@
 library locale_settings_hive;
 
+import 'dart:io';
 import 'dart:ui';
 
+import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
 import 'package:locale_settings/locale_settings.dart';
 import 'package:locale_settings/locale_settings_platform_interface.dart';
 
 final class LocaleSettingsHive extends LocaleSettingsPlatform {
-  static void registerWith() {
-    LocaleSettingsPlatform.instance = LocaleSettingsHive();
+  static void registerWith() {}
+
+  static void initialize() {
+    if (kIsWeb || Platform.isLinux || Platform.isWindows) {
+      LocaleSettingsPlatform.instance = LocaleSettingsHive();
+    }
   }
 
   void Function(Locale locale)? _localeListener;

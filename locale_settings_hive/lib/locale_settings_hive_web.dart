@@ -7,7 +7,5 @@ import 'package:locale_settings_hive/locale_settings_hive.dart';
 
 @immutable
 final class LocaleSettingsHiveWeb {
-  static void registerWith(Registrar registrar) {
-    LocaleSettingsPlatform.instance = LocaleSettingsHive();
-  }
+  static void registerWith(Registrar registrar) {}
 }
