@@ -13,11 +13,17 @@ final class MethodChannelLocaleSettings extends LocaleSettingsPlatform {
 
   @override
   Future<Locale?> getCurrentLocale() async {
-    final locale = await methodChannel.invokeMethod('getCurrentLocale');
-    if (locale != null) {
-      return stringToLocale(locale);
+    try {
+      final locale = await methodChannel.invokeMethod('getCurrentLocale');
+      if (locale != null) {
+        return stringToLocale(locale);
+      }
+      return null;
     }
-    return null;
+    catch (e) {
+      // TODO(sven): handle
+      return null;
+    }
   }
   
   @override
