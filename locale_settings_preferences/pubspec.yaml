@@ -5,7 +5,7 @@ homepage:
 publish_to: none
 
 environment:
-  sdk: '>=3.1.0 <4.0.0'
+  sdk: '>=3.1.1 <4.0.0'
 
 dependencies:
   flutter:
@@ -17,12 +17,12 @@ dependencies:
       url: git@github.com:svenopdehipt/locale_settings.git
       ref: main
       path: locale_settings
-  shared_preferences: ^2.2.0
+  shared_preferences: ^2.2.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.2
+  flutter_lints: ^2.0.3
 
 flutter:
   plugin:
