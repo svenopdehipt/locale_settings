@@ -1,23 +1,19 @@
 name: locale_settings_preferences
 description: Implementation of locale_settings for platforms which don't support settings per app using shared preferences
 version: 1.0.0
-homepage:
-publish_to: none
+repository: https://github.com/svenopdehipt/locale_settings/tree/main/locale_settings_preferences
 
 environment:
-  sdk: '>=3.1.4 <4.0.0'
+  sdk: '>=3.0.0 <4.0.0'
+  flutter: '>=3.0.0'
 
 dependencies:
   flutter:
     sdk: flutter
   flutter_web_plugins:
     sdk: flutter
-  locale_settings:
-    git:
-      url: git@github.com:svenopdehipt/locale_settings.git
-      ref: main
-      path: locale_settings
-  shared_preferences: ^2.2.2
+  locale_settings: ^1.0.0
+  shared_preferences: ^2.0.0
 
 dev_dependencies:
   flutter_test:

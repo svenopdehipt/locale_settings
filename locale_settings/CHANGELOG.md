@@ -1,3 +1,5 @@
-## 0.0.1
+## 1.0.0
 
-* TODO: Describe initial release.
+* The initial release
+* Supports get and set current locale
+* Support LocaleListener to listen for changes

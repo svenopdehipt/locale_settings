@@ -7,7 +7,9 @@ import 'package:locale_settings/locale_settings_platform_interface.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 final class LocaleSettingsPreferences extends LocaleSettingsPlatform {
-  static void registerWith() {
+  static void registerWith() {}
+
+  static void initialize() {
     LocaleSettingsPlatform.instance = LocaleSettingsPreferences();
   }
 
