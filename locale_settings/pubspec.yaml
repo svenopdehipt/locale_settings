@@ -1,6 +1,6 @@
 name: locale_settings
 description: A plugin which supports to change the current language on an os level.
-version: 1.0.0
+version: 1.0.1
 repository: https://github.com/svenopdehipt/locale_settings/tree/main/locale_settings
 
 environment:
@@ -15,7 +15,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^3.0.0
+  flutter_lints: ^6.0.0
 
 flutter:
   plugin:

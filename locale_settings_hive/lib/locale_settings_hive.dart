@@ -4,7 +4,7 @@ import 'dart:io';
 import 'dart:ui';
 
 import 'package:flutter/foundation.dart';
-import 'package:hive/hive.dart';
+import 'package:hive_ce/hive.dart';
 import 'package:locale_settings/locale_settings.dart';
 import 'package:locale_settings/locale_settings_platform_interface.dart';
 
