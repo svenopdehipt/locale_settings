@@ -1,5 +1,3 @@
-library locale_settings_hive;
-
 import 'dart:ui';
 
 import 'package:locale_settings/locale_settings.dart';
@@ -7,9 +5,7 @@ import 'package:locale_settings/locale_settings_platform_interface.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 final class LocaleSettingsPreferences extends LocaleSettingsPlatform {
-  static void registerWith() {}
-
-  static void initialize() {
+  static void registerWith() {
     LocaleSettingsPlatform.instance = LocaleSettingsPreferences();
   }
 

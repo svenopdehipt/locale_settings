@@ -1,6 +1,6 @@
 name: locale_settings_hive
 description: Implementation of locale_settings for platforms which don't support settings per app using hive
-version: 1.0.0
+version: 1.0.1
 repository: https://github.com/svenopdehipt/locale_settings/tree/main/locale_settings_hive
 
 environment:

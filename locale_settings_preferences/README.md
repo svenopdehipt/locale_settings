@@ -18,14 +18,6 @@ Import the package:
 import 'package:locale_settings_preferences/locale_settings_preferences.dart';
 ```
 
-## Usage
-
-Initialize the plugin:
-
-```dart
-LocaleSettingsPreferences.initialize();
-```
-
 ## Supported systems
 
 Supports Windows, Linux and Web. 

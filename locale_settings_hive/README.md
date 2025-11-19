@@ -19,14 +19,6 @@ Import the package:
 import 'package:locale_settings_hive/locale_settings_hive.dart';
 ```
 
-## Usage
-
-Initialize the plugin:
-
-```dart
-LocaleSettingsHive.initialize();
-```
-
 ## Supported systems
 
 Supports Windows, Linux and Web. 
